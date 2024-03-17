@@ -6,7 +6,7 @@ class DocgiaService {
     extractDocgiaData(payload) {
         const docgia = {
             holot: payload.holot,
-            ten: payload.tacgia,
+            ten: payload.ten,
             ngaysinh: payload.ngaysinh,
             phai: payload.phai,
             diachi: payload.diachi,
