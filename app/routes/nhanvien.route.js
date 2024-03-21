@@ -15,5 +15,7 @@ router.route("/:id")
     .get(nhanvien.findOne)
     .put(nhanvien.update)
     .delete(nhanvien.delete);
+router.route("/sdt/:sdt")
+    .get(nhanvien.findBySdt);
 
 module.exports=router; 

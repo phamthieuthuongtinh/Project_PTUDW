@@ -110,3 +110,16 @@ exports.deleteAll = async(req, res, next) => {
         );
     }
 };
+exports.findBySdt = async (req, res, next) => {
+    try {
+        const nhanvienService = new NhanvienService(MongoDB.client);
+        const document = await nhanvienService.getBySdt(req.params.sdt);
+        if (!document) {
+            return next(new ApiError(404, "Nhân viên không tồn tại"));
+        }
+        return res.send(document);
+    } catch (error) {
+        return next(new ApiError(500, `Lỗi khi lấy nhân viên theo số điện thoại: ${error.message}`));
+    }
+};
+

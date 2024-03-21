@@ -46,7 +46,7 @@ class NhanvienService {
         const filter = {
             _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
         };
-        const update = this.extractNhanvientData(payload);
+        const update = this.extractNhanvienData(payload);
         const result = await this.Nhanvien.findOneAndUpdate(
             filter,
             { $set: update },
@@ -67,7 +67,10 @@ class NhanvienService {
         const result = await this.Nhanvien.deleteMany({});
         return result.deletedCount;
     }
-                 
+    async getBySdt(sdt) {
+        return await this.Nhanvien.findOne({ SoDienThoai: sdt });
+    }
+               
 }
 
 module.exports= NhanvienService;

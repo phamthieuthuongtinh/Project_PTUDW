@@ -6,6 +6,7 @@ class SachService {
     extractSachData(payload) {
         const sach = {
             tensach: payload.tensach,
+            hinhanh: payload.hinhanh,
             dongia: payload.dongia,
             soquyen: payload.soquyen,
             namxuatban: payload.namxuatban,
