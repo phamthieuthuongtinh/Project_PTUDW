@@ -15,5 +15,6 @@ router.route("/:id")
     .get(docgia.findOne)
     .put(docgia.update)
     .delete(docgia.delete);
-
+router.route("/sdt/:sdt")
+    .get(docgia.findBySdt);
 module.exports=router; 

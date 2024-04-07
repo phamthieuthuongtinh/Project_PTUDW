@@ -10,6 +10,7 @@ class TheodoiService {
             ngaymuon: payload.ngaymuon,
             ngaytra: payload.ngaytra,
             MSNV: payload.MSNV,
+            trangthai: payload.trangthai,
         };
         // Remove undefined fields
         Object.keys(theodoi).forEach(
@@ -22,7 +23,7 @@ class TheodoiService {
         const theodoi = this.extractTheodoiData(payload);
         const result = await this.Theodoi.findOneAndUpdate(
             theodoi,
-            { $set: {} },
+            { $set: { trangthai: theodoi.trangthai =0 } },
             { returnDocument: "after", upsert: true }
         );
         

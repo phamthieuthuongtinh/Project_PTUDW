@@ -11,6 +11,7 @@ class DocgiaService {
             phai: payload.phai,
             diachi: payload.diachi,
             dienthoai: payload.dienthoai,
+            password: payload.password,
         };
         // Remove undefined fields
         Object.keys(docgia).forEach(
@@ -68,7 +69,9 @@ class DocgiaService {
         const result = await this.Docgia.deleteMany({});
         return result.deletedCount;
     }
-                 
+    async getBySdt(sdt) {
+        return await this.Docgia.findOne({ dienthoai: sdt });
+    }            
 }
 
 module.exports= DocgiaService;

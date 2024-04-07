@@ -110,3 +110,15 @@ exports.deleteAll = async(req, res, next) => {
         );
     }
 };
+exports.findBySdt = async (req, res, next) => {
+    try {
+        const docgiaService = new DocgiaService(MongoDB.client);
+        const document = await docgiaService.getBySdt(req.params.sdt);
+        if (!document) {
+            return next(new ApiError(404, "doc gia không tồn tại"));
+        }
+        return res.send(document);
+    } catch (error) {
+        return next(new ApiError(500, `Lỗi khi lấy doc gia theo số điện thoại: ${error.message}`));
+    }
+};
